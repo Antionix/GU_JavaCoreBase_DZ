@@ -40,17 +40,54 @@ public class HomeWork {
  если да – вернуть true, в противном случае – false;
  */
     public static boolean checkSumIn10Out20(int a, int b) {
-        if (a > 20) {
-            return false;
-        } else if (b > 20) {
+        if ((a > 20) || (b > 20)) {
             return false;
         } else {
             int sum = a + b;
-            if ((sum > 10) && (sum <= 20)) {
-                return true;
-            } else {
-                return false;
-            }
+            return (sum > 10) && (sum <= 20);
+        }
+    }
+
+/*
+    5. Написать метод, которому в качестве параметра передается целое число, метод должен напечатать в консоль
+    положительное ли число передали, или отрицательное; Замечание: ноль считаем положительным числом.
+*/
+    public static void isPositiveOrNegative(int a) {
+        if (a >= 0) {
+            System.out.println("Положительное число");
+        } else {
+            System.out.println("Отрицательное число");
+        }
+    }
+
+/*
+    6. Написать метод, которому в качестве параметра передается целое число, метод должен вернуть true, если число отрицательное;
+*/
+    public static boolean isNegative(int a) {
+        return a < 0;
+    }
+
+/*
+    7. Написать метод, которому в качестве параметра передается строка, обозначающая имя, метод должен вывести в
+    консоль сообщение «Привет, указанное_имя!»;
+ */
+    public static void isWelcome(String name) {
+        System.out.println("Приыет, "+name);
+    }
+
+/*
+    8. * Написать метод, который определяет является ли год високосным, и выводит сообщение в консоль.
+    Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный.
+*/
+    public static void isLeapYear(int year) {
+        if (year % 400 == 0) {
+            System.out.println("Год " + year +" - Високосный");
+        } else if (year % 100 == 0) {
+            System.out.println("Год " + year + " - не Високосный");
+        } else if (year % 4 == 0) {
+            System.out.println("Год " + year + " - Високосный");
+        } else {
+            System.out.println("Год " + year + " - не Високосный");
         }
     }
 
@@ -61,6 +98,21 @@ public class HomeWork {
 
         System.out.println(calculate(2,4,16,8));
 
+        System.out.println(checkSumIn10Out20(23, 12));
         System.out.println(checkSumIn10Out20(13, 12));
+        System.out.println(checkSumIn10Out20(13, 32));
+
+        isPositiveOrNegative(5);
+        isPositiveOrNegative(-10);
+
+        System.out.println(isNegative(-5));
+        System.out.println(isNegative(10));
+
+        isWelcome("Geekbrains");
+
+        isLeapYear(2020);
+        isLeapYear(2000);
+        isLeapYear(1900);
+        isLeapYear(1981);
     }
 }
