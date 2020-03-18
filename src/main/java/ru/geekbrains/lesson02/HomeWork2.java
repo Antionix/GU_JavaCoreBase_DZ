@@ -2,10 +2,10 @@ package ru.geekbrains.lesson02;
 
 public class HomeWork2 {
 
-    public static int[] initRandomArray(int count, int maxValue) {
+    public static int[] initRandomArray(int count, int maxValue, int flagSign) {
         int[] tmp = new int[count];
         for (int i = 0; i < count; i++) {
-            tmp[i] = (int) (Math.random() * (maxValue + 1));
+            tmp[i] = (int) (Math.random() * (maxValue + 1) - (maxValue * flagSign / 2));
 //            System.out.print("[" + tmp[i] + "]");
         }
 //        System.out.println();
@@ -96,7 +96,18 @@ public class HomeWork2 {
     5. ** Задать одномерный массив и найти в нем минимальный и максимальный элементы (без помощи интернета);
     */
     public static void getMinMaxElement(int[] inArray) {
-
+        int minValue = inArray[0], maxValue = inArray[0];
+        System.out.print("05 inArray = ");
+        for (int x : inArray) {
+            if (x < minValue) {
+                minValue = x;
+            }
+            if (x > maxValue) {
+                maxValue = x;
+            }
+            System.out.print("[" + x + "]");
+        }
+        System.out.println("\n05 MinElement = " + minValue + " MaxElement = " + maxValue);
     }
 
     /*
@@ -106,7 +117,28 @@ public class HomeWork2 {
     граница показана символами ||, эти символы в массив не входят.
     */
     public static boolean getEqualLeftRight(int[] inArray) {
+        System.out.print("\n06 inArray = ");
+        for (int x : inArray) {
+            System.out.print("[" + x + "]");
+        }
+        System.out.println();
 
+        int positionLeft = 0, positionRight = inArray.length - 1;
+//        int sumLeft = inArray[positionLeft++], sumRight = inArray[positionRight--];
+        int sumLeft = 0, sumRight = 0;
+//        positionLeft++;
+//        positionRight--;
+        while (positionLeft <= positionRight) {
+            if (sumLeft > sumRight) {
+                sumRight += inArray[positionRight--];
+//                positionRight--;
+            }
+            if (sumLeft <= sumRight) {
+                sumLeft += inArray[positionLeft++];
+//                positionLeft++;
+            }
+        }
+        return  sumLeft == sumRight;
     }
 
     /*
@@ -115,21 +147,21 @@ public class HomeWork2 {
     нельзя пользоваться вспомогательными массивами.
     */
     public static int[] getMoveToN(int[] inArray) {
-
+        return inArray;
     }
 
     /*
     8. Найти 3 минимальный элемент массива
      */
     public static int get3MinElement(int[] inArray) {
-
+        return 1;
     }
 
     public static void main(String[] args) {
         System.out.println("Home work 2");
 
         // Задание 1
-        int[] initArray = initRandomArray(5, 1);
+        int[] initArray = initRandomArray(5, 1, 0);
         System.out.print("01 InitArray = ");
         for (int curV : initArray) {
             System.out.print("[" + curV + "]");
@@ -153,7 +185,17 @@ public class HomeWork2 {
 
         // Задание 4
         getMatrix(7);
+        System.out.println();
 
+        // Задание 5
+        getMinMaxElement(initRandomArray(7, 10, 1));
 
+        // Задание 6
+        int[] testArray = {2, 2, 2, 1, 2, 2, 10, 1};
+        System.out.println(getEqualLeftRight(testArray));
+        System.out.println(getEqualLeftRight(initRandomArray(12, 3,0)));
+
+        // Задание 7
+        // Задание 8
     }
 }
