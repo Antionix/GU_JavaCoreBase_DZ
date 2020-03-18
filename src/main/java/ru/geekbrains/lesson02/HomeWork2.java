@@ -6,16 +6,17 @@ public class HomeWork2 {
         int[] tmp = new int[count];
         for (int i = 0; i < count; i++) {
             tmp[i] = (int) (Math.random() * (maxValue + 1));
-            System.out.print("[" + tmp[i] + "]");
+//            System.out.print("[" + tmp[i] + "]");
         }
-        System.out.println();
+//        System.out.println();
         return tmp;
     }
-/*
-1. Задать целочисленный массив, состоящий из элементов 0 и 1. Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ].
-С помощью цикла и условия заменить 0 на 1, 1 на 0;
-*/
-    public static int[] getChange0And1( int[] arrayValue) {
+
+    /*
+    1. Задать целочисленный массив, состоящий из элементов 0 и 1. Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ].
+    С помощью цикла и условия заменить 0 на 1, 1 на 0;
+    */
+    public static int[] getChange0And1(int[] arrayValue) {
         for (int i = 0; i < arrayValue.length; i++) {
             switch (arrayValue[i]) {
                 case 1: {
@@ -34,9 +35,18 @@ public class HomeWork2 {
         return arrayValue;
     }
 
-/*
-2. Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
-*/
+    /*
+    2. Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
+    */
+    public static int[] initArrayByStep(int count, int steps) {
+        int[] tmp = new int[count];
+        for (int i = 0, x = 0; i < count; i++, x += steps) {
+            tmp[i] = x;
+//            System.out.print("[" + tmp[i] + "]");
+        }
+//        System.out.println();
+        return tmp;
+    }
 
 /*
 3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2;
@@ -72,12 +82,23 @@ public class HomeWork2 {
         System.out.println("Home work 2");
 
         // Задание 1
-        for(int curV: getChange0And1(initRandomArray(15,1))) {
+        int[] initArray = initRandomArray(5, 1);
+        System.out.print("01 InitArray = ");
+        for (int curV : initArray) {
             System.out.print("[" + curV + "]");
         }
-        System.out.println();
+        System.out.print("\n01 ItogArray = ");
+        for (int curV : getChange0And1(initArray)) {
+            System.out.print("[" + curV + "]");
+        }
+        System.out.println("\n");
 
         //Задание 2
+        System.out.print("02 StepArray = ");
+        for (int curV: initArrayByStep(8, 2)) {
+            System.out.print("[" + curV + "]");
+        }
+        System.out.println("\n");
 
     }
 }
