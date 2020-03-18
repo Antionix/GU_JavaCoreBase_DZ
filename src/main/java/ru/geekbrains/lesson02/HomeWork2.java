@@ -1,10 +1,38 @@
 package ru.geekbrains.lesson02;
 
 public class HomeWork2 {
+
+    public static int[] initRandomArray(int count, int maxValue) {
+        int[] tmp = new int[count];
+        for (int i = 0; i < count; i++) {
+            tmp[i] = (int) (Math.random() * (maxValue + 1));
+            System.out.print("[" + tmp[i] + "]");
+        }
+        System.out.println();
+        return tmp;
+    }
 /*
 1. Задать целочисленный массив, состоящий из элементов 0 и 1. Например: [ 1, 1, 0, 0, 1, 0, 1, 1, 0, 0 ].
 С помощью цикла и условия заменить 0 на 1, 1 на 0;
 */
+    public static int[] getChange0And1( int[] arrayValue) {
+        for (int i = 0; i < arrayValue.length; i++) {
+            switch (arrayValue[i]) {
+                case 1: {
+                    arrayValue[i] = 0;
+                    break;
+                }
+                case 0: {
+                    arrayValue[i] = 1;
+                    break;
+                }
+                default: {
+                    arrayValue[i] = -1;
+                }
+            }
+        }
+        return arrayValue;
+    }
 
 /*
 2. Задать пустой целочисленный массив размером 8. С помощью цикла заполнить его значениями 0 3 6 9 12 15 18 21;
@@ -42,5 +70,14 @@ public class HomeWork2 {
 
     public static void main(String[] args) {
         System.out.println("Home work 2");
+
+        // Задание 1
+        for(int curV: getChange0And1(initRandomArray(15,1))) {
+            System.out.print("[" + curV + "]");
+        }
+        System.out.println();
+
+        //Задание 2
+
     }
 }
