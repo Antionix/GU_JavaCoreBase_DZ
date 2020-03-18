@@ -1,5 +1,9 @@
 package ru.geekbrains.lesson02;
 
+import org.w3c.dom.ls.LSOutput;
+
+import javax.crypto.spec.PSource;
+
 public class HomeWork2 {
 
     public static int[] initRandomArray(int count, int maxValue) {
@@ -48,10 +52,24 @@ public class HomeWork2 {
         return tmp;
     }
 
-/*
-3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2;
-*/
-
+    /*
+    3. Задать массив [ 1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 ] пройти по нему циклом, и числа меньшие 6 умножить на 2;
+    */
+    public static void getChangeLess6(int[] arrayValue) {
+        System.out.print("03  inArray = ");
+        for (int x : arrayValue) {
+            System.out.print("[" + x + "]");
+        }
+        System.out.print("\n03 outArray = ");
+        for (int x : arrayValue) {
+            if (x < 6) {
+                System.out.print("[" + (x * 2) + "]");
+            } else {
+                System.out.print("[" + x + "]");
+            }
+        }
+        System.out.println("\n");
+    }
 /*
 4. Создать квадратный двумерный целочисленный массив (количество строк и столбцов одинаковое), и с помощью цикла(-ов)
  заполнить его диагональные элементы единицами;
@@ -95,10 +113,14 @@ public class HomeWork2 {
 
         //Задание 2
         System.out.print("02 StepArray = ");
-        for (int curV: initArrayByStep(8, 2)) {
+        for (int curV : initArrayByStep(8, 2)) {
             System.out.print("[" + curV + "]");
         }
         System.out.println("\n");
+
+        //Задание 3
+        int[] curArray = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1 };
+        getChangeLess6(curArray);
 
     }
 }
