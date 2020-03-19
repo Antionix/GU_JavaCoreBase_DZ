@@ -150,7 +150,7 @@ public class HomeWork2 {
         int lenArray = inArray.length;
         int[] tmp = new int[lenArray];
         int xx = lenArray - nMove;
-        int yy = lenArray + xx;
+//        int yy = lenArray + xx;
         int zz = 0;
         for (int i = 0; i < lenArray; i++, xx++) {
             zz = xx % lenArray;
@@ -173,8 +173,8 @@ public class HomeWork2 {
                 inArray[0] = tmpValue;
             } else {
                 tmpValue = inArray[0];
-                int zz = lenArray;
-                for (int j = 1; j < zz; j++) {
+//                int zz = lenArray;
+                for (int j = 1; j < lenArray; j++) {
                     inArray[j - 1] = inArray[j];
                 }
                 inArray[lenArray - 1] = tmpValue;
@@ -191,7 +191,7 @@ public class HomeWork2 {
         for (int i = 0; i < 3; i++) {
             tmpMin = inArray[0];
             for (int x : inArray) {
-                if (x <= tmpMin && x >= min3) {
+                if (x <= tmpMin) { // && x >= min3) {
                     tmpMin = x;
                 }
             }
