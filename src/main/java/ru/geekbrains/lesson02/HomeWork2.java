@@ -191,8 +191,10 @@ public class HomeWork2 {
         for (int i = 0; i < 3; i++) {
             tmpMin = inArray[0];
             for (int x : inArray) {
-                if (x <= tmpMin) { // && x >= min3) {
-                    tmpMin = x;
+                if (x > min3) {
+                    if (x <= tmpMin) {
+                        tmpMin = x;
+                    }
                 }
             }
             min3 = tmpMin;
@@ -256,7 +258,7 @@ public class HomeWork2 {
         System.out.println("\n");
 
         // Задание 8
-        testArray = initRandomArray(7, 10, 0);
+        testArray = initRandomArray(12, 10, 0);
         System.out.print("08 Array (" + w + ")= ");
         for (int x : testArray) {
             System.out.print("[" + x + "]");
