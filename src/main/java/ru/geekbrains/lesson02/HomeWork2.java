@@ -138,7 +138,7 @@ public class HomeWork2 {
 //                positionLeft++;
             }
         }
-        return  sumLeft == sumRight;
+        return sumLeft == sumRight;
     }
 
     /*
@@ -146,7 +146,40 @@ public class HomeWork2 {
     или отрицательным), при этом метод должен сместить все элементымассива на n позиций. Для усложнения задачи
     нельзя пользоваться вспомогательными массивами.
     */
-    public static int[] getMoveToN(int[] inArray) {
+    public static int[] getMoveToNv1(int[] inArray, int nMove) {
+        int lenArray = inArray.length;
+        int[] tmp = new int[lenArray];
+        int xx = lenArray - nMove;
+        int yy = lenArray + xx;
+        int zz = 0;
+        for (int i = 0; i < lenArray; i++, xx++) {
+            zz = xx % lenArray;
+            tmp[i] = inArray[zz];
+        }
+        return tmp;
+    }
+
+    public static int[] getMoveToNv2(int[] inArray, int nMove) {
+        int lenArray = inArray.length;
+        int tmpValue;
+//        int step = 0;
+
+        for (int i = 0; i < Math.abs(nMove); i++) {
+            if (nMove >= 0) {
+                tmpValue = inArray[lenArray - 1];
+                for (int j = (lenArray - 2); j >= 0; j--) {
+                    inArray[j + 1] = inArray[j];
+                }
+                inArray[0] = tmpValue;
+            } else {
+                tmpValue = inArray[0];
+                int zz = lenArray;
+                for (int j = 1; j < zz; j++) {
+                    inArray[j - 1] = inArray[j];
+                }
+                inArray[lenArray - 1] = tmpValue;
+            }
+        }
         return inArray;
     }
 
@@ -154,7 +187,17 @@ public class HomeWork2 {
     8. Найти 3 минимальный элемент массива
      */
     public static int get3MinElement(int[] inArray) {
-        return 1;
+        int min3 = 0, tmpMin;
+        for (int i = 0; i < 3; i++) {
+            tmpMin = inArray[0];
+            for (int x : inArray) {
+                if (x <= tmpMin && x >= min3) {
+                    tmpMin = x;
+                }
+            }
+            min3 = tmpMin;
+        }
+        return min3;
     }
 
     public static void main(String[] args) {
@@ -193,9 +236,32 @@ public class HomeWork2 {
         // Задание 6
         int[] testArray = {2, 2, 2, 1, 2, 2, 10, 1};
         System.out.println(getEqualLeftRight(testArray));
-        System.out.println(getEqualLeftRight(initRandomArray(12, 3,0)));
+        System.out.println(getEqualLeftRight(initRandomArray(12, 3, 0)));
 
         // Задание 7
+        testArray = initRandomArray(7, 5, 0);
+        System.out.print("07 inArray = ");
+        for (int x : testArray) {
+            System.out.print("[" + x + "]");
+        }
+        int w = -2;
+        System.out.print("\n07 Example1 (" + w + ") = ");
+        for (int x : getMoveToNv1(testArray, w)) {
+            System.out.print("[" + x + "]");
+        }
+        System.out.print("\n07 Example2 (" + w + ")= ");
+        for (int x : getMoveToNv2(testArray, w)) {
+            System.out.print("[" + x + "]");
+        }
+        System.out.println("\n");
+
         // Задание 8
+        testArray = initRandomArray(7, 10, 0);
+        System.out.print("08 Array (" + w + ")= ");
+        for (int x : testArray) {
+            System.out.print("[" + x + "]");
+        }
+        System.out.println("\n min(3) = " + get3MinElement(testArray));
+
     }
 }
